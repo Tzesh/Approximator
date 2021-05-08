@@ -8,7 +8,7 @@ lagrange = Interpolation.Lagrange(x, y)  # creating the lagrange interpolation c
 lagrange.interpolate(26)  # interpolating to the given value
 lagrange.plot()  # plotting the graph
 
-# Newton's Divided Differences Polynomial Interpolation
+# Newton's Divided Difference Polynomial Interpolation
 nddp = Interpolation.NDDP(x, y)  # creating the Newton's divided differences polynomial interpolation class
 nddp.interpolate(26)  # interpolating to the given value
 nddp.plot()  # plotting the graph

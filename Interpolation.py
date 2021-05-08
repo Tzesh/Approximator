@@ -71,7 +71,7 @@ class NDDP(Interpolation):
         self.x = np.append(self.x, xn)  # saving the xn to include into the graph
         self.y = np.append(self.y, yn)  # saving the yn to include into the graph
 
-        print("Newton's Divided Differences Polynomial Interpolation has been done, for x=%2.f, y=%f" % (xn, yn))
+        print("Newton's Divided Difference Polynomial Interpolation has been done, for x=%2.f, y=%f" % (xn, yn))
 
     def get_ndd_coefficients(self, x, y):
         n = np.shape(y)[0]
