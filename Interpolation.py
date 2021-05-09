@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt  # for plotting the graphs
 
 class Interpolation():
 
-    def __init__(self, x, y):  # default constructor
+    def __init__(self, x, y):  # constructor
         self.x = x  # will be used in calculations and plotting graph
         self.y = y  # will be used in calculations and plotting graph
 
