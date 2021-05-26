@@ -8,10 +8,10 @@ class Interpolation():
         self.x = x  # will be used in calculations and plotting graph
         self.y = y  # will be used in calculations and plotting graph
 
-    def interpolate(self, xn):  # will be overridden in sub classes
+    def interpolate(self, xn):  # will be overridden in subclasses
         print("Not defined interpolation")
 
-    def plot(self):  # all the sub classes will use this basic scheme to plot a graph
+    def plot(self):  # all the subclasses will use this basic scheme to plot a graph
         x_axis = np.msort(self.x)  # x values must be sorted
         y_axis = np.msort(self.y)  # y values must be sorted
 
