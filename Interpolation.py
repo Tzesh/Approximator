@@ -12,15 +12,20 @@ class Interpolation():
         print("Not defined interpolation")
 
     def plot(self):  # all the subclasses will use this basic scheme to plot a graph
-        x_axis = np.msort(self.x)  # x values must be sorted
-        y_axis = np.msort(self.y)  # y values must be sorted
-
+        x_axis = np.array(self.x, dtype=object)
+        y_axis = np.array(self.y, dtype=object)
         plt.plot(x_axis, y_axis)  # plotting the graph according to x and y values
         plt.title(self.__class__.__name__ + " Interpolation")  # adding the title of interpolation
         plt.xlabel("x")  # labeling the x-axis
         plt.ylabel("y")  # labeling the y-axis
         plt.savefig(self.__class__.__name__ + "_interpolation.png", dpi=500)  # saving the graph before showing it
         plt.show()  # showing the graph
+
+    def insert(self, xn, yn):
+        self.x.append(xn)
+        self.x.sort()
+        i = self.x.index(xn)
+        self.y.insert(i, yn)
 
 
 class Lagrange(Interpolation):
@@ -40,8 +45,7 @@ class Lagrange(Interpolation):
                     p *= (xn - x[j]) / (x[i] - x[j])  # pi(xn)
             yn += y[i] * p  # pi(xn)*yn
 
-        self.x = np.append(self.x, xn)  # saving the xn to include into the graph
-        self.y = np.append(self.y, yn)  # saving the yn to include into the graph
+        self.insert(xn, yn)  # saving x and y values
 
         print("Lagrange Interpolation has been done, for x=%2.f, y=%f" % (xn, yn))
 
@@ -49,7 +53,6 @@ class Lagrange(Interpolation):
 class NDDP(Interpolation):
 
     def interpolate(self, xn):  # overridden interpolate method to calculate nddp interpolation
-
         x = np.array(self.x)  # getting the x values as numpy array
         y = np.array(self.y)  # getting the y values as numpy array
 
@@ -68,8 +71,7 @@ class NDDP(Interpolation):
 
         yn = np.polyval(p, xn)  # adding to final polynomial
 
-        self.x = np.append(self.x, xn)  # saving the xn to include into the graph
-        self.y = np.append(self.y, yn)  # saving the yn to include into the graph
+        self.insert(xn, yn)  # saving x and y values
 
         print("Newton's Divided Difference Polynomial Interpolation has been done, for x=%2.f, y=%f" % (xn, yn))
 
@@ -96,8 +98,7 @@ class DirectMethod(Interpolation):
 
         yn = self.get_value(s_matrix, xn)  # calculating the value of y using b0, b1,..., bn
 
-        self.x = np.append(self.x, xn)  # saving the xn to include into the graph
-        self.y = np.append(self.y, yn)  # saving the yn to include into the graph
+        self.insert(xn, yn)  # saving x and y values
 
         print("Direct Method Interpolation has been done, for x=%2.f, y=%f" % (xn, yn))
 
